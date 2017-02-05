@@ -175,7 +175,7 @@ void WJets_fakeRate() {
 	TH1D * h_njets_loose = new TH1D("njets_loose","njets_loose",10,0.,10.);
 	TH1D * h_njets_tight = new TH1D("njets_tight","njets_tight",10,0.,10.);
 
-	TString fileNames[4] = {"251116/DiTauMC/W1JetsToLNu_LO/H2TauTauTreeProducerTauTau/tree.root","251116/DiTauMC/W2JetsToLNu_LO/H2TauTauTreeProducerTauTau/tree.root","251116/DiTauMC/W3JetsToLNu_LO/H2TauTauTreeProducerTauTau/tree.root","251116/DiTauMC/W4JetsToLNu_LO/H2TauTauTreeProducerTauTau/tree.root"};
+	TString fileNames[4] = {"../251116/DiTauMC/W1JetsToLNu_LO/H2TauTauTreeProducerTauTau/tree.root","../251116/DiTauMC/W2JetsToLNu_LO/H2TauTauTreeProducerTauTau/tree.root","../251116/DiTauMC/W3JetsToLNu_LO/H2TauTauTreeProducerTauTau/tree.root","../251116/DiTauMC/W4JetsToLNu_LO/H2TauTauTreeProducerTauTau/tree.root"};
 
 	double lumi = 12918.1407;
 	double X_sec[4] = {9644.5,3144.5,954.8,485.6};
@@ -184,7 +184,7 @@ void WJets_fakeRate() {
 	//int gen_match = 5; // prompt rate calculation
 	int gen_match = 6; // fake rate calculation
 	double IsoCut = 0.5;
-	TString pathPNG = "PlotsFakeRate_WNJets_sr2/";
+	TString pathPNG = "PlotsFakeRate_WNJets/";
 	mkdir(pathPNG,0777);
 	//mkdir(pathPNG.c_str(),0777);
 
@@ -290,7 +290,7 @@ void WJets_fakeRate() {
 			h_njets_tight->Fill(tr.n_jets,evt_weight);
 		}
 	}
-	
+/*	
 	if (!(tr.pfmet_pt > 30)) continue;
 	if (!(tr.mvis > 85 || tr.mvis < 55)) continue;
 	if (!(tr.mt2 > 20)) continue;
@@ -298,7 +298,7 @@ void WJets_fakeRate() {
 	//if (!(tr.mt2 > 90)) continue;
 	// +++ SR II +++
 	if (!(tr.mt2 < 90 && summt > 250 && tr.n_bjets == 0)) continue;
-
+*/
 	if (tr.l1_byIsolationMVArun2v1DBoldDMwLT>0.5 && tr.l2_byIsolationMVArun2v1DBoldDMwLT>0.5) N_ll += evt_weight;
 
 	if (tr.l1_byIsolationMVArun2v1DBoldDMwLT>4.5 && tr.l2_byIsolationMVArun2v1DBoldDMwLT>4.5) {
